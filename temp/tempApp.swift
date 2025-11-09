@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+@available(iOS 17, *)
 @main
 struct tempApp: App {
     var sharedModelContainer: ModelContainer = {
@@ -25,8 +26,29 @@ struct tempApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            TabView {
+                
+                UserMapWithPolygons()
+                    .tabItem {
+                    Label("Map", systemImage: "map")
+                }
+                
+//                ContentView()
+//                    .tabItem {
+//                    Label("", systemImage: "map")
+//                }
+                UserView()
+                    .tabItem {
+                    Label("User", systemImage: "person.crop.circle")
+                }
+                
+                
+                
+                
+            }
         }
         .modelContainer(sharedModelContainer)
     }
 }
+
